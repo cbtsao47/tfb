@@ -6,6 +6,7 @@ const StandardInput = ({
   title,
   placeholder,
   value,
+  rows,
   name,
   type,
   onChangeInput
@@ -19,7 +20,7 @@ const StandardInput = ({
         : theme.palette.shade[30],
     opacity: isFocus || (!isFocus && value) ? 1 : 0
   });
-  const inputStyle = {
+  const textareaStyle = {
     border: interpolate([color], c => `0.838px solid ${c}`),
     outline: "none",
     width: "100%",
@@ -27,7 +28,8 @@ const StandardInput = ({
     padding: `${theme.spacing}px ${theme.spacing}px`,
     borderTopLeftRadius: 0,
     marginBottom: `${theme.spacing}px`,
-    boxShadow: interpolate([color], color => `${theme.boxShadow} ${color}`)
+    boxShadow: interpolate([color], color => `${theme.boxShadow} ${color}`),
+    resize: "vertical"
   };
   const titleStyle = {
     opacity: opacity,
@@ -39,21 +41,22 @@ const StandardInput = ({
   };
   return (
     <>
-      <div className="standard-input">
+      <div className="standard-textarea">
         <animated.span style={titleStyle}>{title}</animated.span>
-        <animated.input
+        <animated.textarea
           type={type}
-          value={value}
           name={name}
+          value={value}
           placeholder={isFocus ? "" : placeholder}
-          style={inputStyle}
+          rows={rows}
+          style={textareaStyle}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           onChange={e => onChangeInput(e.target.value)}
         />
       </div>
       <style jsx>{`
-        .standard-input {
+        .standard-textarea {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
