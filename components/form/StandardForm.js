@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { useSpring, animated, interpolate } from 'react-spring'
-import StandardInput from '../input/StandardInput'
-import DateInput from '../input/DateInput'
-import StandardTextarea from '../textarea/StandardTextarea'
+import StandardInput from '../../library/input/StandardInput'
+import DateInput from '../../library/input/DateInput'
+import StandardTextarea from '../../library/textarea/StandardTextarea'
 import theme from '../../theme'
 
 const defaultFormData = {
