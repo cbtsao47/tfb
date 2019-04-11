@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import { useSpring, animated, interpolate } from "react-spring";
-import theme from "../../theme";
+import { useState, useEffect } from 'react'
+import { useSpring, animated, interpolate } from 'react-spring'
+import theme from '../../theme'
 
 const StandardButton = ({
   name,
@@ -10,48 +10,48 @@ const StandardButton = ({
   disabled,
   onClick
 }) => {
-  const [isFocus, setIsFocus] = useState(false);
+  const [isFocus, setIsFocus] = useState(false)
   const { color, inverseColor, scale } = useSpring({
     from: {
       color: theme.palette.shade[0],
-      inverseColor: theme.palette.blue,
+      inverseColor: theme.palette.blue[100],
       scale: 1
     },
     color: outline
       ? theme.palette.shade[0]
       : disabled
       ? theme.palette.shade[30]
-      : theme.palette.blue,
+      : theme.palette.blue[100],
     inverseColor: outline
-      ? theme.palette.blue
-      : disabled
-      ? theme.palette.shade[30]
+      ? disabled
+        ? theme.palette.shade[30]
+        : theme.palette.blue[100]
       : theme.palette.shade[0],
-    scale: !disabled && isFocus ? 1.2 : 1
-  });
+    scale: !disabled && isFocus ? 1.618 : 1
+  })
   const buttonStyle = {
     backgroundColor: interpolate([color], c => `${c}`),
     color: interpolate([inverseColor], c => `${c}`),
-    border: interpolate([color], c => `0.8px solid ${c}`),
-    outline: "none",
-    textTransform: "uppercase",
-    borderRadius: `${theme.spacing / 2}px`,
-    padding: `${theme.spacing}px ${theme.spacing * 1.6}px`,
+    border: interpolate([inverseColor], c => `0.8px solid ${c}`),
+    outline: 'none',
+    textTransform: 'uppercase',
+    borderRadius: `${theme.spacing / 3}px`,
+    padding: `${theme.spacing}px ${theme.spacing * 3}px`,
     borderTopLeftRadius: 0,
-    cursor: !disabled && "pointer",
+    cursor: !disabled && 'pointer',
     transform: interpolate([scale], s => `scale(${s}, ${s})`)
-  };
+  }
   const handleOnClick = e => {
-    setIsFocus(true);
-    onClick(e);
-  };
+    setIsFocus(true)
+    onClick(e)
+  }
 
   useEffect(() => {
-    let timer1 = setTimeout(() => setIsFocus(false), 100);
+    let timer1 = setTimeout(() => setIsFocus(false), 100)
     return () => {
-      clearTimeout(timer1);
-    };
-  }, [isFocus]);
+      clearTimeout(timer1)
+    }
+  }, [isFocus])
 
   return (
     <>
@@ -65,7 +65,7 @@ const StandardButton = ({
         }
       `}</style>
     </>
-  );
-};
+  )
+}
 
-export default StandardButton;
+export default StandardButton

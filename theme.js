@@ -13,20 +13,23 @@ const theme = {
       90: "#202020",
       100: "#000"
     },
-    blue: "#0491C9",
+    blue: {
+      0: "#c4edff",
+      100: "#0491C9"
+    },
     pink: "#F1C2BA",
     red: "#EE4266",
     navy: "#01172F",
     white: "#F6E8EA"
   },
-  spacing: 8,
+  spacing: 8 * 1.618,
   font: {
     size: {
       small: 14,
       normal: 16
     },
     family: {
-      normal: "Sans-serif"
+      normal: "sans-serif"
     }
   },
   boxShadow: "1px 1px 0px 0px"

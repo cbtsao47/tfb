@@ -41,8 +41,12 @@ const Index = () => (
       />
     </div>
     <style jsx global>{`
+      * {
+        box-sizing: border-box;
+      }
       body,
       input,
+      textarea,
       button {
         font-size: ${theme.font.size.normal}px;
         font-family: ${theme.font.family.normal};
